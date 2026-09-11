@@ -26,9 +26,39 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // Add your functions below:
 
 
+// Josiah Hands version
+const luhn = (arr) => {
+    const arrR = arr.reverse()
+    const arrCalc = []
+    let calcSum = 0
+    for (let i = 0; i < arrR.length; i++) {
+        if (i % 2 === 0) {
+            arrCalc.push(arrR[i])
+        } else if (arrR[i]*2 > 9) {
+            arrCalc.push((arrR[i]*2)-9)
+        } else if (arrR[i]*2 <= 9) {
+            arrCalc.push(arrR[i]*2)
+        } else {
+            return 'Error!'
+        }
+    } 
+    for (const el of arrCalc) {
+        calcSum += el
+    } 
+    if ((calcSum % 10) === 0) {
+        return true
+    } else if ((calcSum % 10) !== 0) {
+        return false
+    } else {
+        return 'Error!'
+    }
+} 
+
+console.log('should be true: '+luhn(valid1)) // true
+console.log('should be false: '+luhn(invalid1)) // false
 
 
-
-
-
+const findInvalidCards = nArr => {
+    
+}
 
