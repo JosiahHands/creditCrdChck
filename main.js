@@ -99,6 +99,8 @@ const idInvalidCardCompanies = nArr => {
     return corp;
 };
 
+// output
+
 console.log(' ')
 
 // the code above provides 3 tools
