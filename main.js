@@ -25,9 +25,10 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
+// The code below is written by Josiah Hands
 
-// Josiah Hands version
-const luhn = (arr) => {
+// This is the luhn algorithm
+const validateCred = (arr) => {
     const arrR = arr.reverse()
     const arrCalc = []
     let calcSum = 0
@@ -41,7 +42,8 @@ const luhn = (arr) => {
         } else {
             return 'Error!'
         }
-    } 
+    };
+    arr = arr.reverse();
     for (const el of arrCalc) {
         calcSum += el
     } 
@@ -54,11 +56,55 @@ const luhn = (arr) => {
     }
 } 
 
-console.log('should be true: '+luhn(valid1)) // true
-console.log('should be false: '+luhn(invalid1)) // false
-
-
+// Making an array of invalid cards
+let invalidCards = []
 const findInvalidCards = nArr => {
-    
+    for (const el of nArr) {
+        if (validateCred(el) === true) {
+            invalidCards.push()
+        } else if (validateCred(el) === false) {
+            invalidCards.push(el)
+        } else {
+            return 'Error!';
+        }
+    }
+    return invalidCards  
 }
 
+// making an array of companies that issued the invalid cards
+
+const idInvalidCardCompanies = nArr => {
+    let allCorp = [];
+    let corp = [];
+    for (const el of nArr) {
+        if (el[0] === 3) {
+            allCorp.push('Amex (American Express)');
+        } else if (el[0] === 4) {
+            allCorp.push('Visa');
+        } else if (el[0] === 5) {
+            allCorp.push('Mastercard');
+        } else if (el[0] === 6) {
+            allCorp.push('Discover');
+        } else {
+            allCorp.push('other company');
+        };
+    };
+    for (const el of allCorp) {
+        if (corp.includes(el) === true) {
+            corp.push()
+        } else {
+            corp.push(el);
+        };
+    };
+    return corp;
+};
+
+console.log(' ')
+
+// the code above provides 3 tools
+/* 1 test a single card */ console.log(validateCred(valid1)); // returns: true
+/* 2 test a batch of cards */ console.log(findInvalidCards(batch)) // return: array of invalid cards
+// 3 check which companies issued the invalid cards: 
+console.log(idInvalidCardCompanies(invalidCards)) // returns: array of companies 
+
+console.log(' ')
