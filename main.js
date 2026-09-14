@@ -86,7 +86,7 @@ const idInvalidCardCompanies = nArr => {
         } else if (el[0] === 6) {
             allCorp.push('Discover');
         } else {
-            allCorp.push('other company');
+            allCorp.push('unknown');
         };
     };
     for (const el of allCorp) {
@@ -99,14 +99,18 @@ const idInvalidCardCompanies = nArr => {
     return corp;
 };
 
+// simplified names
+const tool1 = validateCred
+const tool2 = findInvalidCards
+const tool3 = idInvalidCardCompanies
+
 // output
 
 console.log(' ')
 
 // the code above provides 3 tools
-/* 1 test a single card */ console.log(validateCred(valid1)); // returns: true
-/* 2 test a batch of cards */ console.log(findInvalidCards(batch)) // return: array of invalid cards
-// 3 check which companies issued the invalid cards: 
-console.log(idInvalidCardCompanies(invalidCards)) // returns: array of companies 
+/* 1 test a single card */ console.log(tool1(valid1)); // returns: true
+/* 2 test a batch of cards */ console.log(tool2(batch)) // return: array of invalid cards (nested)
+/* 3 check which companies issued the invalid cards */ console.log(tool3(invalidCards)) // returns: array of companies 
 
 console.log(' ')
